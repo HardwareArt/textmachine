@@ -189,7 +189,7 @@ void setup() {
 
   tft.begin();
   tft.setRotation(ROTATION);
-  tft.fillScreen(ILI9341_BLACK);
+  tft.fillScreen(ILI9341_RED);
   tft.invertDisplay(true);
 
 
@@ -199,6 +199,7 @@ while (!connected) {
     if (nbAccess.begin("") == NB_READY) { // Does unsigned long baud = 115200; SerialSARA.begin(baud); internally 
 
         connected = true;
+        tft.fillScreen(ILI9341_BLACK);
         
         // PSM low power modem
         // nbAcess begin also activates modem begin 
@@ -219,7 +220,9 @@ while (!connected) {
     // SerialSARA.println("AT+CPSMS=1,,,\"00000001\",\"00001010\"");
 
     } else {
+        tft.fillScreen(ILI9341_BLACK);
         tft.println("Not connected");
+        Serial.println("Not connected");
         delay(1000);
     }
 }
