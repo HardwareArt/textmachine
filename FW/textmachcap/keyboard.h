@@ -7,6 +7,7 @@ bool keyboardTick(const ScreenPoint& sp, bool justTouched);
 const char* keyboardGetText(void);
 void keyboardReset(void);
 void keyboardClearText(void);
+void keyboardSwitchToMessageField(const char* keepInToField);
 static void drawKeyboard(void);
 static void drawNumberpad(void);
 

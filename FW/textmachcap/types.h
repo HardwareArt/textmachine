@@ -3,7 +3,18 @@
 
 #include <Arduino.h>
 
+#define MAX_CONTACTS  50
+#define MAX_NAME_LEN  20
+#define MAX_PHONE_LEN 20
+#define MAX_BODY_RECEIVE_LEN 200
+
 // ── Display ───────────────────────────────────────────────────────
+
+static void copyBounded(char* dst, const char* src, size_t dstSize) {
+  if (dstSize == 0) return;
+  strncpy(dst, src, dstSize - 1);
+  dst[dstSize - 1] = '\0';
+}
 
 struct ScreenPoint {
   int16_t x;
@@ -11,5 +22,9 @@ struct ScreenPoint {
   ScreenPoint(int16_t x = 0, int16_t y = 0) : x(x), y(y) {}
 };
 
+struct Contact {
+  char name[MAX_NAME_LEN];
+  char phone[MAX_PHONE_LEN];
+};
 
 #endif // TYPES_H

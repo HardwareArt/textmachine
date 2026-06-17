@@ -40,7 +40,16 @@
 #define FT_REG_NUMTOUCHES 0x02
 #define FT_REG_TOUCH1     0x03
 
-#define SD_CS    0
+#include <SD.h>
+#include "contacts.h"
+
+static bool kbDrawnFlag = false;
+enum ContactStep { CONTACT_NAME, CONTACT_PHONE };
+ContactStep contactStep = CONTACT_NAME;
+static char newContactName[30];
+static char newContactPhone[MAX_PHONE_LEN];
+
+#define SD_CS 3
 
 #define ROTATION 0
 
@@ -53,8 +62,7 @@ bool menuDrawn     = false;
 bool numberAquired = false;
 int  displayConvo  = 0;
 
-#define MAX_PHONE_LEN        20
-#define MAX_BODY_RECEIVE_LEN 200
+
 
 static char recipientNumber[MAX_PHONE_LEN];
 static char msgBody[MAX_BODY_LEN];
@@ -92,16 +100,6 @@ bool ctpRead(ScreenPoint& sp) {
 
 // ── NB / SMS helpers ──────────────────────────────────────────────
 
-unsigned long testFilledCircles(uint8_t radius, uint16_t color) {
-  unsigned long start;
-  int x, y, w = tft.width(), h = tft.height(), r2 = radius * 2;
-  tft.fillScreen(ILI9341_BLACK);
-  start = micros();
-  for (x = radius; x < w; x += r2)
-    for (y = radius; y < h; y += r2)
-      tft.fillCircle(x, y, radius, color);
-  return micros() - start;
-}
 
 void receive() {
   int c;
@@ -129,7 +127,7 @@ void receive() {
 
     senderBody[i] = '\0';
 
-    pushMessage(senderNumber, senderBody, IN, NULL); 
+    pushMessage(senderNumber, senderBody, IN, "Unknown"); 
     // storeIncomingMessage(senderNumber, senderBody);
     // Make space for the message. 
     tft.println();
@@ -169,13 +167,22 @@ void text(const char* remoteNum, const char* message) {
 
 // ── UI state machine ──────────────────────────────────────────────
 
-enum UiState { UI_MENU, UI_MESSAGES, UI_REFRESH, UI_COMPOSE, UI_CONVO };
+enum UiState { UI_MENU, UI_MESSAGES, UI_REFRESH, UI_COMPOSE, UI_CONVO, UI_CONTACTS};
 UiState currentState = UI_MENU;
 
 // ── Setup ─────────────────────────────────────────────────────────
 
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(115200);
+  while (!Serial && millis() < 3000);
+  
+  pinMode(SD_CS, OUTPUT);
+  digitalWrite(SD_CS, HIGH);
+  if (!SD.begin(SD_CS)) {
+  Serial.println("SD init failed");
+  } else {
+      Serial.println("SD ready");
+  }
 
 
   pinMode(TFT_CS, OUTPUT);
@@ -191,6 +198,8 @@ void setup() {
   tft.setRotation(ROTATION);
   tft.fillScreen(ILI9341_RED);
   tft.invertDisplay(true);
+
+
 
 
 
@@ -303,9 +312,10 @@ void loop() {
         return;
       }
       if (justPressed && contactsBtn.isClicked(sp)) {
-        tft.fillScreen(ILI9341_ORANGE);
+        // tft.fillScreen(ILI9341_ORANGE);
         tft.setCursor(0, 0);
-        tft.println("Other button touched");
+        // tft.println("Other button touched");
+        currentState = UI_CONTACTS;
         menuDrawn = false;
         return;
       }
@@ -313,8 +323,8 @@ void loop() {
     }
 
     case UI_MESSAGES: {
-      recentMessagesScreen(sp, false);
-
+      // recentMessagesScreen(sp, false);
+      int picked = recentMessagesScreen(sp, justPressed);
       if (justPressed && msgBackBtnPressed(sp)) {
         recentMessagesReset();
         currentState = UI_MENU;
@@ -322,8 +332,6 @@ void loop() {
         wasTouched = true;
         return;
       }
-
-      int picked = recentMessagesScreen(sp, justPressed);
       if (picked != -1) {
         displayConvo = picked;
         conversationReset();
@@ -359,7 +367,8 @@ void loop() {
           strncpy(recipientNumber, kb, MAX_PHONE_LEN - 1);
           recipientNumber[MAX_PHONE_LEN - 1] = '\0';
           numberAquired = true;
-          keyboardClearText();
+          //keyboardClearText();
+          keyboardSwitchToMessageField(recipientNumber);
           Serial.println("Phone # acquired");
         } else if (keyboardTick(sp, justPressed)) {
           Serial.println("Error: Send pressed with no number");
@@ -387,6 +396,42 @@ void loop() {
       }
       break;
     }
+
+case UI_CONTACTS: {
+  
+
+    if (justPressed && keyboardBackPressed(sp)) {
+        currentState = UI_MENU;
+        menuDrawn = false;
+        kbDrawnFlag = false;
+        return;
+    }
+
+    if (keyboardTick(sp, justPressed)) {
+        const char* kb = keyboardGetText();
+
+        if (contactStep == CONTACT_NAME) {
+            strncpy(newContactName, kb, sizeof(newContactName) - 1);
+            newContactName[sizeof(newContactName) - 1] = '\0';
+            keyboardReset();
+            contactStep = CONTACT_PHONE;
+            Serial.println("Name acquired, enter phone");
+        } else {
+            strncpy(newContactPhone, kb, MAX_PHONE_LEN - 1);
+            newContactPhone[MAX_PHONE_LEN - 1] = '\0';
+
+            // saveContactToSD(newContactName, newContactPhone);
+            addContactFromUI(newContactName, newContactPhone);
+            
+
+            keyboardReset();
+            currentState = UI_MENU;
+            menuDrawn = false;
+            kbDrawnFlag = false;
+        }
+    }
+    break;
+}
 
     default: break;
   }

@@ -60,6 +60,7 @@ static bool msgOrNumber = false;
 static bool alphaMode   = false;
 static bool capsLock    = false;
 
+static char frozenToField[MAX_PHONE_LEN] = "";
 static char typed[MAX_TEXT];
 static int  typedLen = 0;
 
@@ -81,7 +82,18 @@ static void clearTypedBuffer() {
 }
 
 static void drawTypedLine() {
+
+
+    // To: field — draw frozen number if we have one, otherwise leave it
   tft.fillRect(76, 0, tft.width() - 76, 34, COL_FIELD);
+  if (frozenToField[0] != '\0') {
+    tft.setCursor(80, 8);
+    uiUseDefaultFont();
+    tft.setTextColor(ILI9341_BLACK);
+    tft.print(frozenToField);
+  }
+
+  // tft.fillRect(76, 0, tft.width() - 76, 34, COL_FIELD);
   tft.fillRect(0, 44, tft.width(), 34, COL_FIELD);
   tft.setCursor(4, 46);
   uiUseDefaultFont();
@@ -120,8 +132,16 @@ static void backspaceChar() {
   redrawTypedArea();
 }
 
+void keyboardSwitchToMessageField(const char* keepInToField) {
+  clearTypedBuffer();
+  msgOrNumber = true;
+  copyBounded(frozenToField, keepInToField, MAX_PHONE_LEN);
+  redrawTypedArea();   // now safe — drawTypedLine() will paint frozenToField
+}
+
 void keyboardClearText(void) {
   clearTypedBuffer();
+  // means that we are now in the number field
   msgOrNumber = true;
   redrawTypedArea();
 }
@@ -161,7 +181,8 @@ static void drawHeader() {
 // ---------- 3x4 Numpad ----------
 
 static void drawNumberPad() {
-  drawHeader();
+  if (!kbDrawn) drawHeader();
+  else tft.fillRect(0, KB_Y, tft.width(), tft.height() - KB_Y, COL_KB_BG);
   initColors();
 
   const char* labels[12] = {
@@ -189,7 +210,8 @@ static void drawNumberPad() {
 // ---------- Alpha keyboard ----------
 
 static void drawKeyboard() {
-  drawHeader();
+  if (!kbDrawn) drawHeader();
+  else tft.fillRect(0, KB_Y, tft.width(), tft.height() - KB_Y, COL_KB_BG);
   initColors();
   int idx = 0;
 
@@ -252,7 +274,7 @@ bool keyboardTick(const ScreenPoint& sp, bool justTouched) {
 
   if (switchkeyboardButton.isClicked(sp)) {
     alphaMode = !alphaMode;
-    kbDrawn   = false;
+    // kbDrawn   = false;
     if (alphaMode) drawKeyboard(); else drawNumberPad();
     return false;
   }
@@ -270,7 +292,7 @@ bool keyboardTick(const ScreenPoint& sp, bool justTouched) {
       if (i == 6)  { appendChar('7'); return false; }
       if (i == 7)  { appendChar('8'); return false; }
       if (i == 8)  { appendChar('9'); return false; }
-      if (i == 9)  { alphaMode = true; kbDrawn = false; drawKeyboard(); return false; }
+      if (i == 9)  { alphaMode = true; /*kbDrawn = false; */ drawKeyboard(); return false; }
       if (i == 10) { appendChar('0'); return false; }
       if (i == 11) { backspaceChar(); return false; }
     }
@@ -287,10 +309,10 @@ bool keyboardTick(const ScreenPoint& sp, bool justTouched) {
 
     if (i >= 0  && i <= 9)  { appendChar(r1[i]);      return false; }
     if (i >= 10 && i <= 18) { appendChar(r2[i - 10]); return false; }
-    if (i == 19) { capsLock = !capsLock; kbDrawn = false; drawKeyboard(); return false; } 
+    if (i == 19) { capsLock = !capsLock; /*kbDrawn = false; */drawKeyboard(); return false; } 
     if (i >= 20 && i <= 26) { appendChar(r3[i - 20]); return false; }
     if (i == 27) { backspaceChar(); return false; }
-    if (i == 28) { alphaMode = false; kbDrawn = false; drawNumberPad(); return false; }
+    if (i == 28) { alphaMode = false; /*kbDrawn = false; */drawNumberPad(); return false; }
     if (i == 29) { appendChar(' '); return false; }
     if (i == 30) {
       Serial.print(msgOrNumber ? "MSG: " : "PHONE: ");
@@ -309,8 +331,9 @@ void keyboardReset(void) {
   kbDrawn     = false;
   typedLen    = 0;
   typed[0]    = '\0';
+  frozenToField[0] = '\0';
   msgOrNumber = false;
   alphaMode   = false;
   capsLock    = false;
-  // TODO add horiziontal logic here 
+  
 }
