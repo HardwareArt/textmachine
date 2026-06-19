@@ -27,4 +27,9 @@ struct Contact {
   char phone[MAX_PHONE_LEN];
 };
 
+// Enums 
+
+enum keyboardMode {KB_COMPOSE, KB_ADD_CONTACT, KB_DEBUG};
+
+
 #endif // TYPES_H

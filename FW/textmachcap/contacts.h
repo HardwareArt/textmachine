@@ -11,6 +11,11 @@
 // Make screen easily rotatable 
 
 
+int  contactsScreen(const ScreenPoint& sp, bool justPressed);
+
+void contactsInit();
+void contactsScreenReset();
+
 void addContactFromUI(const char* name, const char* phone);
 void saveContactToSD(const char* name, const char* phone);
 void loadContactsFromSD();

@@ -3,7 +3,7 @@
 
 struct ScreenPoint;
 
-bool keyboardTick(const ScreenPoint& sp, bool justTouched);
+bool keyboardTick(const ScreenPoint& sp, bool justTouched, int mode);
 const char* keyboardGetText(void);
 void keyboardReset(void);
 void keyboardClearText(void);
@@ -15,5 +15,9 @@ static void drawNumberpad(void);
 bool keyboardBackPressed(const ScreenPoint& sp);
 bool msgBtnPressed(const ScreenPoint& sp);
 bool toBtnPressed(const ScreenPoint& sp);
+bool nameBtnPressed(const ScreenPoint& sp);
+bool numberBtnPressed(const ScreenPoint& sp);
+
+void debugPrint(const char* cmd, const char* response);
 
 #endif
