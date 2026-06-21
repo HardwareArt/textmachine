@@ -132,3 +132,21 @@ void updateCSQ() {
         tft.fillRoundRect(x, y, barW, h, 1, color);
     }
 }
+
+
+void updateBattery() {
+    int raw = analogRead(ADC_BATTERY);
+    float vbat = (raw / 1023.0) * 3.3 * 1.275 ;  // MKR internal divider scales to 3.3V max
+                                                // 1.275 is to account for internal voltage divider at EHB section of U1
+
+    Serial.print("VBAT: ");
+    Serial.print(vbat, 2);
+    Serial.println("V");
+
+    // tft.fillRect(100, 0, 80, 10, ILI9341_G);
+    tft.setTextSize(1);
+    tft.setTextColor(ILI9341_WHITE);
+    tft.setCursor(120, 5);
+    tft.print(vbat, 2);
+    tft.print("V");
+}

@@ -169,12 +169,6 @@ bool drawConversationToTFT(int selection) {
 // Storage helpers
 // -------------------------------------------------------------------------------------------------
 
-static void copyBounded(char* dst, const char* src, size_t dstSize) {
-  if (dstSize == 0) return;
-
-  strncpy(dst, src, dstSize - 1);
-  dst[dstSize - 1] = '\0';
-}
 
 static int findThreadByPhone(const char* phone) {
   for (int i = 0; i <= threadTop; i++) {

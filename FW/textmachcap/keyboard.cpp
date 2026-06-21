@@ -26,6 +26,8 @@ static const int NUM_GAP  = 3;
 
 static const int MAX_TEXT = 160;
 
+static int operatingMode;
+
 // ── iOS-style color palette ───────────────────────────────────────
 // These are initialized in drawKeyboard/drawNumberPad after tft is ready
 static uint16_t COL_KEY;       // regular key: dark gray
@@ -36,6 +38,10 @@ static uint16_t COL_FIELD;     // input field: white
 static uint16_t COL_HEADER;    // header bar background
 
 static bool colorsInit = false;
+
+static bool symMode = false;
+static const int SYM_W = 46;
+static Button symKeys[20];
 
 static void initColors() {
   if (colorsInit) return;
@@ -49,17 +55,20 @@ static void initColors() {
 }
 
 static Button kbKeys[31];
-static Button numKeys[12];
+static Button numKeys[13];
 static Button kbBackBtn;
 static Button toBtn;
 static Button msgBtn;
 static Button switchkeyboardButton;
+static Button nameBtn;
+static Button numberBtn;
 
 static bool kbDrawn     = false;
 static bool msgOrNumber = false;
 static bool alphaMode   = false;
 static bool capsLock    = false;
 
+static char frozenToField[MAX_PHONE_LEN] = "";
 static char typed[MAX_TEXT];
 static int  typedLen = 0;
 
@@ -81,27 +90,94 @@ static void clearTypedBuffer() {
 }
 
 static void drawTypedLine() {
-  tft.fillRect(76, 0, tft.width() - 76, 34, COL_FIELD);
-  tft.fillRect(0, 44, tft.width(), 34, COL_FIELD);
-  tft.setCursor(4, 46);
-  uiUseDefaultFont();
-  tft.setTextColor(ILI9341_BLACK);
-  tft.print(typed);
-  drawCaret(4, 46);
+  switch (operatingMode) {
+
+    case KB_COMPOSE:
+      tft.fillRect(76, 0, tft.width() - 76, 34, COL_FIELD);
+      if (frozenToField[0] != '\0') {
+        tft.setCursor(80, 8);
+        uiUseDefaultFont();
+        tft.setTextColor(ILI9341_BLACK);
+        tft.print(frozenToField);
+      }
+      tft.fillRect(0, 44, tft.width(), 34, COL_FIELD);
+      tft.setCursor(4, 46);
+      uiUseDefaultFont();
+      tft.setTextColor(ILI9341_BLACK);
+      tft.print(typed);
+      drawCaret(4, 46);
+      break;
+
+    case KB_ADD_CONTACT:
+      tft.fillRect(76, 2,  tft.width() - 78, 30, COL_FIELD);
+      if (frozenToField[0] != '\0') {
+        tft.setCursor(80, 8);
+        uiUseDefaultFont();
+        tft.setTextColor(ILI9341_BLACK);
+        tft.print(frozenToField);
+      }
+      tft.fillRect(76, 38, tft.width() - 78, 30, COL_FIELD);
+      tft.setCursor(80, 44);
+      uiUseDefaultFont();
+      tft.setTextColor(ILI9341_BLACK);
+      tft.print(typed);
+      drawCaret(80, 44);
+      break;
+
+    case KB_DEBUG:
+      tft.fillRect(0, 72, tft.width(), 28, COL_FIELD);
+      tft.setCursor(4, 76);
+      uiUseDefaultFont();
+      tft.setTextColor(ILI9341_BLACK);
+      tft.print(typed);
+      drawCaret(4, 76);
+      break;
+
+    default:
+      break;
+  }
 }
 
 static void drawTypedLineNum() {
-  tft.fillRect(76, 0, tft.width() - 76, 34, COL_FIELD);
-  tft.fillRect(0, 44, tft.width(), 34, COL_FIELD);
-  tft.setCursor(80, 8);
-  uiUseDefaultFont();
-  tft.setTextColor(ILI9341_BLACK);
-  tft.print(typed);
-  drawCaret(80, 8);
+  switch (operatingMode) {
+
+    case KB_COMPOSE:
+      tft.fillRect(76, 0, tft.width() - 76, 34, COL_FIELD);
+      tft.fillRect(0,  44, tft.width(),      34, COL_FIELD);
+      tft.setCursor(80, 8);
+      uiUseDefaultFont();
+      tft.setTextColor(ILI9341_BLACK);
+      tft.print(typed);
+      drawCaret(80, 8);
+      break;
+
+    case KB_ADD_CONTACT:
+      tft.fillRect(76, 2,  tft.width() - 78, 30, COL_FIELD);  // clear # field
+      tft.fillRect(76, 38, tft.width() - 78, 30, COL_FIELD);  // clear Name field
+      tft.setCursor(80, 8);
+      uiUseDefaultFont();
+      tft.setTextColor(ILI9341_BLACK);
+      tft.print(typed);
+      drawCaret(80, 8);
+      break;
+
+    case KB_DEBUG:
+      tft.fillRect(0, 72, tft.width(), 28, COL_FIELD);
+      tft.setCursor(4, 76);
+      uiUseDefaultFont();
+      tft.setTextColor(ILI9341_BLACK);
+      tft.print(typed);
+      drawCaret(4, 76);
+      break;
+
+    default:
+      break;
+  }
 }
 
 static void redrawTypedArea() {
-  if (msgOrNumber) drawTypedLine();
+  if (msgOrNumber) 
+  drawTypedLine();
   else             drawTypedLineNum();
 }
 
@@ -120,15 +196,25 @@ static void backspaceChar() {
   redrawTypedArea();
 }
 
+void keyboardSwitchToMessageField(const char* keepInToField) {
+  alphaMode = true;
+  clearTypedBuffer();
+  msgOrNumber = true;
+  copyBounded(frozenToField, keepInToField, MAX_PHONE_LEN);
+  redrawTypedArea();  // paint frozenToField into header
+  drawKeyboard();     // swap numpad → alpha keys
+}
+
 void keyboardClearText(void) {
   clearTypedBuffer();
+  // means that we are now in the number field
   msgOrNumber = true;
   redrawTypedArea();
 }
 
-// ---------- Header ----------
+// ---------- Different header variations ----------
 
-static void drawHeader() {
+static void drawTextHeader() {
   initColors();
 
   // Full screen background
@@ -145,7 +231,12 @@ static void drawHeader() {
   tft.setTextColor(ILI9341_WHITE);
   tft.setTextSize(2);
   tft.setCursor(34, 6);
+  if(operatingMode == KB_COMPOSE){
   tft.print("To:");
+  }
+  else{
+    tft.print("Phone");
+  }
   tft.setCursor(6, 42);
   tft.print("Msg:");
 
@@ -158,30 +249,100 @@ static void drawHeader() {
   redrawTypedArea();
 }
 
-// ---------- 3x4 Numpad ----------
 
-static void drawNumberPad() {
-  drawHeader();
+static void drawContactHeader() {
   initColors();
 
-  const char* labels[12] = {
+  // Full screen background
+  tft.fillScreen(COL_KB_BG);
+
+  // Header bar
+  tft.fillRect(0, 0, tft.width(), HEADER_H - 4, COL_HEADER);
+
+  // Input fields
+  tft.fillRect(76, 2,  tft.width() - 78, 30, COL_FIELD);
+  tft.fillRect(76, 38, tft.width() - 78, 30, COL_FIELD);
+
+  // Labels
+  tft.setTextColor(ILI9341_WHITE);
+  tft.setTextSize(2);
+  tft.setCursor(34, 6);
+  tft.print("#:");
+  tft.setCursor(6, 42);
+  tft.print("Name:");
+
+  // Buttons
+  kbBackBtn.initButton(2,  2,  28,              28, "<", COL_SPECIAL);
+  numberBtn.initButton(76, 2,  tft.width() - 78, 30, "", COL_FIELD);
+  nameBtn.initButton(  76, 38, tft.width() - 78, 30, "", COL_FIELD);
+
+  redrawTypedArea();
+}
+
+static void drawDebugHeader() {
+  initColors();
+
+  // Full screen background
+  tft.fillScreen(COL_KB_BG);
+
+  // Header bar
+  tft.fillRect(0, 0, tft.width(), HEADER_H - 4, COL_HEADER);
+
+  // Input field
+  tft.fillRect(76, 2,  tft.width() - 78, 30, COL_FIELD);
+
+  // Output field
+  tft.fillRect(76, 38, tft.width() - 78, 30, COL_FIELD);
+
+  // Labels
+  tft.setTextColor(ILI9341_WHITE);
+  tft.setTextSize(2);
+  tft.setCursor(34, 6);
+  tft.print("#:");
+  tft.setCursor(6, 42);
+  tft.print("Name:");
+
+  // Buttons
+  kbBackBtn.initButton(2,  2,  28,              28, "<", COL_SPECIAL);
+
+
+  redrawTypedArea();
+}
+// ---------- 3x4 Numpad ----------
+
+static const int NUM_HALF_W = 37;
+
+static void drawNumberPad() {
+  if (!kbDrawn) {
+    if (operatingMode == KB_ADD_CONTACT) drawContactHeader();
+    else if (operatingMode == KB_COMPOSE) drawTextHeader();
+    else                                  drawDebugHeader();
+  }
+  else tft.fillRect(0, KB_Y, tft.width(), tft.height() - KB_Y, COL_KB_BG);
+  initColors();
+
+  const char* labels[9] = {
     "1","2","3",
     "4","5","6",
-    "7","8","9",
-    "ABC","0","BK"
+    "7","8","9"
   };
 
-  for (int row = 0; row < 4; row++) {
+  // Rows 0-2: normal 3x3 grid
+  for (int row = 0; row < 3; row++) {
     for (int col = 0; col < 3; col++) {
-      int i   = row * 3 + col;
-      int x   = KB_X + col * (NUM_W + NUM_GAP);
-      int y   = KB_Y + row * (NUM_H + NUM_GAP);
-
-      // Bottom row: ABC and BK are special, 0 is regular
-      uint16_t c = (i == 9 || i == 11) ? COL_SPECIAL : COL_KEY;
-      numKeys[i].initButton(x, y, NUM_W, NUM_H, labels[i], c);
+      int i = row * 3 + col;
+      int x = KB_X + col * (NUM_W + NUM_GAP);
+      int y = KB_Y + row * (NUM_H + NUM_GAP);
+      numKeys[i].initButton(x, y, NUM_W, NUM_H, labels[i], COL_KEY);
     }
   }
+
+  // Row 3: ABC (half) | !@# (half) | 0 | BK
+  int y4 = KB_Y + 3 * (NUM_H + NUM_GAP);
+  numKeys[9].initButton( KB_X,                                    y4, NUM_HALF_W,          NUM_H, "ABC", COL_SPECIAL);
+  numKeys[10].initButton(KB_X + NUM_HALF_W + NUM_GAP,             y4, NUM_HALF_W,          NUM_H, "!@#", COL_SPECIAL);
+  numKeys[11].initButton(KB_X + (NUM_W + NUM_GAP),                y4, NUM_W,               NUM_H, "0",   COL_KEY);
+  numKeys[12].initButton(KB_X + 2 * (NUM_W + NUM_GAP),            y4, NUM_W,               NUM_H, "BK",  COL_SPECIAL);
 
   kbDrawn = true;
 }
@@ -189,7 +350,15 @@ static void drawNumberPad() {
 // ---------- Alpha keyboard ----------
 
 static void drawKeyboard() {
-  drawHeader();
+
+  if (!kbDrawn) {
+    if      (operatingMode == KB_ADD_CONTACT) drawContactHeader();
+else if (operatingMode == KB_DEBUG)       drawDebugHeader();
+else                                      drawTextHeader();
+  }
+
+
+  else tft.fillRect(0, KB_Y, tft.width(), tft.height() - KB_Y, COL_KB_BG);
   initColors();
   int idx = 0;
 
@@ -231,15 +400,51 @@ static void drawKeyboard() {
   kbDrawn = true;
 }
 
+// ---------- Symbol Mode----- 
+
+static void drawSymbolPad() {
+  if (!kbDrawn) {
+    if      (operatingMode == KB_ADD_CONTACT) drawContactHeader();
+else if (operatingMode == KB_DEBUG)       drawDebugHeader();
+else                                      drawTextHeader();
+  }
+  else tft.fillRect(0, KB_Y, tft.width(), tft.height() - KB_Y, COL_KB_BG);
+  initColors();
+
+  const char* labels[20] = {
+    "!","@","#","$","%",
+    "+","-","=","_","/",
+    "(",")",",",".","?",
+    "ABC","\"","'","*","BK"
+  };
+
+  for (int row = 0; row < 4; row++) {
+    for (int col = 0; col < 5; col++) {
+      int i = row * 5 + col;
+      int x = KB_X + col * (SYM_W + KEY_GAP);
+      int y = KB_Y + row * (KEY_H + KEY_GAP);
+      uint16_t c = (i == 15) ? COL_SPECIAL :   // ABC
+                   (i == 19) ? COL_SPECIAL :   // BK
+                   COL_KEY;
+      symKeys[i].initButton(x, y, SYM_W, KEY_H, labels[i], c);
+    }
+  }
+
+  kbDrawn = true;
+}
+
 // ---------- Button helpers ----------
 
 bool keyboardBackPressed(const ScreenPoint& sp) { return kbBackBtn.isClicked(sp); }
 bool msgBtnPressed(const ScreenPoint& sp)        { return msgBtn.isClicked(sp); }
 bool toBtnPressed(const ScreenPoint& sp)         { return toBtn.isClicked(sp); }
+bool nameBtnPressed(const ScreenPoint& sp)   { return nameBtn.isClicked(sp); }
+bool numberBtnPressed(const ScreenPoint& sp) { return numberBtn.isClicked(sp); }
 
 // ---------- Public tick ----------
 
-bool keyboardTick(const ScreenPoint& sp, bool justTouched) {
+bool keyboardTick(const ScreenPoint& sp, bool justTouched, int mode) {
+  operatingMode = mode;
   if (!kbDrawn) {
     if (alphaMode) drawKeyboard();
     else           drawNumberPad();
@@ -252,30 +457,67 @@ bool keyboardTick(const ScreenPoint& sp, bool justTouched) {
 
   if (switchkeyboardButton.isClicked(sp)) {
     alphaMode = !alphaMode;
-    kbDrawn   = false;
+    // kbDrawn   = false;
     if (alphaMode) drawKeyboard(); else drawNumberPad();
     return false;
   }
 
-  // -------- NUMPAD MODE --------
-  if (!alphaMode) {
-    for (int i = 0; i < 12; i++) {
-      if (!numKeys[i].isClicked(sp)) continue;
-      if (i == 0)  { appendChar('1'); return false; }
-      if (i == 1)  { appendChar('2'); return false; }
-      if (i == 2)  { appendChar('3'); return false; }
-      if (i == 3)  { appendChar('4'); return false; }
-      if (i == 4)  { appendChar('5'); return false; }
-      if (i == 5)  { appendChar('6'); return false; }
-      if (i == 6)  { appendChar('7'); return false; }
-      if (i == 7)  { appendChar('8'); return false; }
-      if (i == 8)  { appendChar('9'); return false; }
-      if (i == 9)  { alphaMode = true; kbDrawn = false; drawKeyboard(); return false; }
-      if (i == 10) { appendChar('0'); return false; }
-      if (i == 11) { backspaceChar(); return false; }
+  // in keyboardTick, add after the alphaMode check:
+
+// -------- SYMBOL MODE --------
+if (symMode) {
+  for (int i = 0; i < 20; i++) {
+    if (!symKeys[i].isClicked(sp)) continue;
+
+    const char* syms[] = {
+      "!","@","#","$","%",
+      "+","-","=","_","/",
+      "(",")",",",".","?",
+      "ABC","\"","'","*","BK"
+    };
+
+    if (i == 15) {  // ABC → back to alpha
+      symMode   = false;
+      alphaMode = true;
+      drawKeyboard();
+      return false;
+    }
+    if (i == 19) { backspaceChar(); return false; }  // BK
+
+    // all other keys — append the symbol
+    // single char symbols
+    const char* s = syms[i];
+    if (s[1] == '\0') {
+      appendChar(s[0]);
+    } else {
+      // multi char like " — append first char
+      appendChar(s[0]);
     }
     return false;
   }
+  return false;
+}
+
+  // -------- NUMPAD MODE --------
+if (!alphaMode && !symMode) {
+  for (int i = 0; i < 13; i++) {
+    if (!numKeys[i].isClicked(sp)) continue;
+    if (i == 0)  { appendChar('1'); return false; }
+    if (i == 1)  { appendChar('2'); return false; }
+    if (i == 2)  { appendChar('3'); return false; }
+    if (i == 3)  { appendChar('4'); return false; }
+    if (i == 4)  { appendChar('5'); return false; }
+    if (i == 5)  { appendChar('6'); return false; }
+    if (i == 6)  { appendChar('7'); return false; }
+    if (i == 7)  { appendChar('8'); return false; }
+    if (i == 8)  { appendChar('9'); return false; }
+    if (i == 9)  { alphaMode = true;  drawKeyboard();   return false; }  // ABC
+    if (i == 10) { symMode   = true;  drawSymbolPad();  return false; }  // !@#
+    if (i == 11) { appendChar('0');   return false; }
+    if (i == 12) { backspaceChar();   return false; }
+  }
+  return false;
+}
 
   // -------- ALPHA MODE --------
   for (int i = 0; i < 31; i++) {
@@ -287,10 +529,10 @@ bool keyboardTick(const ScreenPoint& sp, bool justTouched) {
 
     if (i >= 0  && i <= 9)  { appendChar(r1[i]);      return false; }
     if (i >= 10 && i <= 18) { appendChar(r2[i - 10]); return false; }
-    if (i == 19) { capsLock = !capsLock; kbDrawn = false; drawKeyboard(); return false; } 
+    if (i == 19) { capsLock = !capsLock; /*kbDrawn = false; */drawKeyboard(); return false; } 
     if (i >= 20 && i <= 26) { appendChar(r3[i - 20]); return false; }
     if (i == 27) { backspaceChar(); return false; }
-    if (i == 28) { alphaMode = false; kbDrawn = false; drawNumberPad(); return false; }
+    if (i == 28) { alphaMode = false; /*kbDrawn = false; */drawNumberPad(); return false; }
     if (i == 29) { appendChar(' '); return false; }
     if (i == 30) {
       Serial.print(msgOrNumber ? "MSG: " : "PHONE: ");
@@ -308,9 +550,26 @@ const char* keyboardGetText(void) { return typed; }
 void keyboardReset(void) {
   kbDrawn     = false;
   typedLen    = 0;
+  symMode = false;
   typed[0]    = '\0';
+  frozenToField[0] = '\0';
   msgOrNumber = false;
   alphaMode   = false;
   capsLock    = false;
-  // TODO add horiziontal logic here 
+  
+}
+
+void debugPrint(const char* cmd, const char* response) {
+  tft.fillRect(0, 0, tft.width(), 36, COL_KB_BG);
+  tft.setTextSize(1);
+  tft.setTextColor(ILI9341_WHITE);
+
+  // echo command
+  tft.setCursor(0, 2);
+  tft.print("> ");
+  tft.print(cmd);
+
+  // response below
+  tft.setCursor(0, 14);
+  tft.print(response);
 }

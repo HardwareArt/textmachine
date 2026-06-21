@@ -15,5 +15,6 @@ void uiUseButtonFont();
 
 void updateClock();
 void updateCSQ();
+void updateBattery();
 
 #endif
