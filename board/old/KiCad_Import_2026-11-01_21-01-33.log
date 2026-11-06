@@ -1,0 +1,215 @@
+[2026-11-01 21:01:33,897][INFO]:  Importing File: /Users/stantangeman/Downloads/HA_FONA_LARA_20.kicad_pcb
+[2026-11-01 21:01:33,899][INFO]:  Adding companion document: /Users/stantangeman/Downloads/HA_FONA_LARA_20.kicad_sch
+[2026-11-01 21:01:33,903][INFO]:  Processing documents list
+[2026-11-01 21:01:33,903][INFO]:  Reading document: HA_FONA_LARA_20.kicad_pcb
+[2026-11-01 21:01:33,906][WARN]:  KiCad PCB Board Reader: Unsupported keyword: 'covering' of parentNode 'setup' at line: 43
+[2026-11-01 21:01:33,906][WARN]:  KiCad PCB Board Reader: Unsupported keyword: 'plugging' of parentNode 'setup' at line: 47
+[2026-11-01 21:01:33,906][WARN]:  KiCad PCB Board Reader: Unsupported keyword: 'capping' of parentNode 'setup' at line: 51
+[2026-11-01 21:01:33,906][WARN]:  KiCad PCB Board Reader: Unsupported keyword: 'filling' of parentNode 'setup' at line: 52
+[2026-11-01 21:01:33,906][WARN]:  KiCad PCB Board Reader: Unsupported keyword: 'units' of parentNode 'footprint' at line: 158
+[2026-11-01 21:01:33,906][WARN]:  KiCad PCB Board Reader: Unsupported keyword: 'duplicate_pad_numbers_are_jumpers' of parentNode 'footprint' at line: 165
+[2026-11-01 21:01:33,906][WARN]:  KiCad PCB Board Reader: Unsupported keyword: 'units' of parentNode 'footprint' at line: 301
+[2026-11-01 21:01:33,906][WARN]:  KiCad PCB Board Reader: Unsupported keyword: 'duplicate_pad_numbers_are_jumpers' of parentNode 'footprint' at line: 308
+[2026-11-01 21:01:33,906][WARN]:  KiCad PCB Board Reader: Unsupported keyword: 'units' of parentNode 'footprint' at line: 1010
+[2026-11-01 21:01:33,906][WARN]:  KiCad PCB Board Reader: Unsupported keyword: 'duplicate_pad_numbers_are_jumpers' of parentNode 'footprint' at line: 1017
+[2026-11-01 21:01:33,906][WARN]:  KiCad PCB Board Reader: Unsupported keyword: 'units' of parentNode 'footprint' at line: 1180
+[2026-11-01 21:01:33,906][WARN]:  KiCad PCB Board Reader: Unsupported keyword: 'duplicate_pad_numbers_are_jumpers' of parentNode 'footprint' at line: 1187
+[2026-11-01 21:01:33,906][WARN]:  KiCad PCB Board Reader: Unsupported keyword: 'units' of parentNode 'footprint' at line: 1337
+[2026-11-01 21:01:33,906][WARN]:  KiCad PCB Board Reader: Unsupported keyword: 'duplicate_pad_numbers_are_jumpers' of parentNode 'footprint' at line: 1344
+[2026-11-01 21:01:33,906][WARN]:  KiCad PCB Board Reader: Unsupported keyword: 'units' of parentNode 'footprint' at line: 1719
+[2026-11-01 21:01:33,906][WARN]:  KiCad PCB Board Reader: Unsupported keyword: 'duplicate_pad_numbers_are_jumpers' of parentNode 'footprint' at line: 1726
+[2026-11-01 21:01:33,906][WARN]:  KiCad PCB Board Reader: Unsupported keyword: 'units' of parentNode 'footprint' at line: 3461
+[2026-11-01 21:01:33,906][WARN]:  KiCad PCB Board Reader: Unsupported keyword: 'duplicate_pad_numbers_are_jumpers' of parentNode 'footprint' at line: 3468
+[2026-11-01 21:01:33,906][WARN]:  KiCad PCB Board Reader: Unsupported keyword: 'units' of parentNode 'footprint' at line: 3701
+[2026-11-01 21:01:33,906][WARN]:  KiCad PCB Board Reader: Unsupported keyword: 'duplicate_pad_numbers_are_jumpers' of parentNode 'footprint' at line: 3708
+[2026-11-01 21:01:33,906][WARN]:  KiCad PCB Board Reader: Unsupported keyword: 'units' of parentNode 'footprint' at line: 3871
+[2026-11-01 21:01:33,906][WARN]:  KiCad PCB Board Reader: Unsupported keyword: 'duplicate_pad_numbers_are_jumpers' of parentNode 'footprint' at line: 3878
+[2026-11-01 21:01:33,906][WARN]:  KiCad PCB Board Reader: Unsupported keyword: 'units' of parentNode 'footprint' at line: 4029
+[2026-11-01 21:01:33,906][WARN]:  KiCad PCB Board Reader: Unsupported keyword: 'duplicate_pad_numbers_are_jumpers' of parentNode 'footprint' at line: 4036
+[2026-11-01 21:01:33,906][WARN]:  KiCad PCB Board Reader: Unsupported keyword: 'units' of parentNode 'footprint' at line: 4175
+[2026-11-01 21:01:33,906][WARN]:  KiCad PCB Board Reader: Unsupported keyword: 'duplicate_pad_numbers_are_jumpers' of parentNode 'footprint' at line: 4182
+[2026-11-01 21:01:33,906][WARN]:  KiCad PCB Board Reader: Unsupported keyword: 'units' of parentNode 'footprint' at line: 4345
+[2026-11-01 21:01:33,906][WARN]:  KiCad PCB Board Reader: Unsupported keyword: 'duplicate_pad_numbers_are_jumpers' of parentNode 'footprint' at line: 4352
+[2026-11-01 21:01:33,906][WARN]:  KiCad PCB Board Reader: Unsupported keyword: 'units' of parentNode 'footprint' at line: 4638
+[2026-11-01 21:01:33,906][WARN]:  KiCad PCB Board Reader: Unsupported keyword: 'duplicate_pad_numbers_are_jumpers' of parentNode 'footprint' at line: 4645
+[2026-11-01 21:01:33,906][WARN]:  KiCad PCB Board Reader: Unsupported keyword: 'units' of parentNode 'footprint' at line: 4808
+[2026-11-01 21:01:33,906][WARN]:  KiCad PCB Board Reader: Unsupported keyword: 'duplicate_pad_numbers_are_jumpers' of parentNode 'footprint' at line: 4815
+[2026-11-01 21:01:33,906][WARN]:  KiCad PCB Board Reader: Unsupported keyword: 'units' of parentNode 'footprint' at line: 5048
+[2026-11-01 21:01:33,906][WARN]:  KiCad PCB Board Reader: Unsupported keyword: 'duplicate_pad_numbers_are_jumpers' of parentNode 'footprint' at line: 5055
+[2026-11-01 21:01:33,907][WARN]:  KiCad PCB Board Reader: Unsupported keyword: 'units' of parentNode 'footprint' at line: 5206
+[2026-11-01 21:01:33,907][WARN]:  KiCad PCB Board Reader: Unsupported keyword: 'duplicate_pad_numbers_are_jumpers' of parentNode 'footprint' at line: 5213
+[2026-11-01 21:01:33,908][INFO]:  Converting document: '/Users/stantangeman/Downloads/HA_FONA_LARA_20.kicad_pcb'
+[2026-11-01 21:01:35,749][INFO]:  KiCad Pcb Converter: Attribute name 'KiLib_Generator' from line 142 need to be changed to 'KILIB_GENERATOR'
+[2026-11-01 21:01:35,749][WARN]:  KiCad Footprint Converter: Custom Shape pads are not supported. Importing pad from line '895' as regular round pad. Pad geometries will be translated as footprint geometries.
+[2026-11-01 21:01:35,750][INFO]:  KiCad Pcb Converter: Attribute name 'KiLib_Generator' from line 1164 need to be changed to 'KILIB_GENERATOR'
+[2026-11-01 21:01:35,751][INFO]:  KiCad Pcb Converter: Attribute name 'KiLib_Generator' from line 1322 need to be changed to 'KILIB_GENERATOR'
+[2026-11-01 21:01:35,751][WARN]:  KiCad Footprint Converter: Rounded rectangular pads are not supported. Importing pad from line '3361' as regular square pad.
+[2026-11-01 21:01:35,751][INFO]:  KiCad Pcb Converter: Attribute name 'KiLib_Generator' from line 1703 need to be changed to 'KILIB_GENERATOR'
+[2026-11-01 21:01:35,752][INFO]:  KiCad Pcb Converter: Attribute name 'KiLib_Generator' from line 3445 need to be changed to 'KILIB_GENERATOR'
+[2026-11-01 21:01:35,752][INFO]:  KiCad Pcb Converter: Attribute name 'KiLib_Generator' from line 3855 need to be changed to 'KILIB_GENERATOR'
+[2026-11-01 21:01:35,752][INFO]:  KiCad Pcb Converter: Attribute name 'KiLib_Generator' from line 4013 need to be changed to 'KILIB_GENERATOR'
+[2026-11-01 21:01:35,752][WARN]:  KiCad Footprint Converter: Rounded rectangular pads are not supported. Importing pad from line '4548' as regular square pad.
+[2026-11-01 21:01:35,753][INFO]:  KiCad Pcb Converter: Attribute name 'KiLib_Generator' from line 4329 need to be changed to 'KILIB_GENERATOR'
+[2026-11-01 21:01:35,753][INFO]:  KiCad Pcb Converter: Attribute name 'KiLib_Generator' from line 4792 need to be changed to 'KILIB_GENERATOR'
+[2026-11-01 21:01:35,760][INFO]:  Finished processing document: '/Users/stantangeman/Downloads/HA_FONA_LARA_20.kicad_pcb'
+[2026-11-01 21:01:35,760][INFO]:  Reading document: HA_FONA_LARA_20.kicad_sch
+[2026-11-01 21:01:35,760][WARN]:  KiCad Schematic Reader: Unsupported keyword: 'in_pos_files' of parentNode 'symbol' at line: 15
+[2026-11-01 21:01:35,760][WARN]:  KiCad Schematic Reader: Unsupported keyword: 'duplicate_pin_numbers_are_jumpers' of parentNode 'symbol' at line: 16
+[2026-11-01 21:01:35,760][WARN]:  KiCad Schematic Reader: Unsupported keyword: 'in_pos_files' of parentNode 'symbol' at line: 463
+[2026-11-01 21:01:35,760][WARN]:  KiCad Schematic Reader: Unsupported keyword: 'duplicate_pin_numbers_are_jumpers' of parentNode 'symbol' at line: 464
+[2026-11-01 21:01:35,760][WARN]:  KiCad Schematic Reader: Unsupported keyword: 'in_pos_files' of parentNode 'symbol' at line: 687
+[2026-11-01 21:01:35,760][WARN]:  KiCad Schematic Reader: Unsupported keyword: 'duplicate_pin_numbers_are_jumpers' of parentNode 'symbol' at line: 688
+[2026-11-01 21:01:35,760][WARN]:  KiCad Schematic Reader: Unsupported keyword: 'in_pos_files' of parentNode 'symbol' at line: 842
+[2026-11-01 21:01:35,760][WARN]:  KiCad Schematic Reader: Unsupported keyword: 'duplicate_pin_numbers_are_jumpers' of parentNode 'symbol' at line: 843
+[2026-11-01 21:01:35,760][WARN]:  KiCad Schematic Reader: Unsupported keyword: 'in_pos_files' of parentNode 'symbol' at line: 1020
+[2026-11-01 21:01:35,760][WARN]:  KiCad Schematic Reader: Unsupported keyword: 'duplicate_pin_numbers_are_jumpers' of parentNode 'symbol' at line: 1021
+[2026-11-01 21:01:35,760][WARN]:  KiCad Schematic Reader: Unsupported keyword: 'in_pos_files' of parentNode 'symbol' at line: 1201
+[2026-11-01 21:01:35,760][WARN]:  KiCad Schematic Reader: Unsupported keyword: 'duplicate_pin_numbers_are_jumpers' of parentNode 'symbol' at line: 1202
+[2026-11-01 21:01:35,760][WARN]:  KiCad Schematic Reader: Unsupported keyword: 'in_pos_files' of parentNode 'symbol' at line: 1402
+[2026-11-01 21:01:35,760][WARN]:  KiCad Schematic Reader: Unsupported keyword: 'duplicate_pin_numbers_are_jumpers' of parentNode 'symbol' at line: 1403
+[2026-11-01 21:01:35,760][WARN]:  KiCad Schematic Reader: Unsupported keyword: 'in_pos_files' of parentNode 'symbol' at line: 2381
+[2026-11-01 21:01:35,760][WARN]:  KiCad Schematic Reader: Unsupported keyword: 'duplicate_pin_numbers_are_jumpers' of parentNode 'symbol' at line: 2382
+[2026-11-01 21:01:35,760][WARN]:  KiCad Schematic Reader: Unsupported keyword: 'in_pos_files' of parentNode 'symbol' at line: 2499
+[2026-11-01 21:01:35,760][WARN]:  KiCad Schematic Reader: Unsupported keyword: 'duplicate_pin_numbers_are_jumpers' of parentNode 'symbol' at line: 2500
+[2026-11-01 21:01:35,760][WARN]:  KiCad Schematic Reader: Unsupported keyword: 'in_pos_files' of parentNode 'symbol' at line: 2610
+[2026-11-01 21:01:35,760][WARN]:  KiCad Schematic Reader: Unsupported keyword: 'duplicate_pin_numbers_are_jumpers' of parentNode 'symbol' at line: 2611
+[2026-11-01 21:01:35,760][WARN]:  KiCad Schematic Reader: Unsupported keyword: 'body_style' of parentNode 'symbol' at line: 4033
+[2026-11-01 21:01:35,760][WARN]:  KiCad Schematic Reader: Unsupported keyword: 'in_pos_files' of parentNode 'symbol' at line: 4037
+[2026-11-01 21:01:35,760][WARN]:  KiCad Schematic Reader: Unsupported keyword: 'body_style' of parentNode 'symbol' at line: 4111
+[2026-11-01 21:01:35,760][WARN]:  KiCad Schematic Reader: Unsupported keyword: 'in_pos_files' of parentNode 'symbol' at line: 4115
+[2026-11-01 21:01:35,760][WARN]:  KiCad Schematic Reader: Unsupported keyword: 'body_style' of parentNode 'symbol' at line: 4258
+[2026-11-01 21:01:35,760][WARN]:  KiCad Schematic Reader: Unsupported keyword: 'in_pos_files' of parentNode 'symbol' at line: 4262
+[2026-11-01 21:01:35,760][WARN]:  KiCad Schematic Reader: Unsupported keyword: 'body_style' of parentNode 'symbol' at line: 4337
+[2026-11-01 21:01:35,760][WARN]:  KiCad Schematic Reader: Unsupported keyword: 'in_pos_files' of parentNode 'symbol' at line: 4341
+[2026-11-01 21:01:35,760][WARN]:  KiCad Schematic Reader: Unsupported keyword: 'body_style' of parentNode 'symbol' at line: 4484
+[2026-11-01 21:01:35,760][WARN]:  KiCad Schematic Reader: Unsupported keyword: 'in_pos_files' of parentNode 'symbol' at line: 4488
+[2026-11-01 21:01:35,760][WARN]:  KiCad Schematic Reader: Unsupported keyword: 'body_style' of parentNode 'symbol' at line: 4569
+[2026-11-01 21:01:35,760][WARN]:  KiCad Schematic Reader: Unsupported keyword: 'in_pos_files' of parentNode 'symbol' at line: 4573
+[2026-11-01 21:01:35,760][WARN]:  KiCad Schematic Reader: Unsupported keyword: 'body_style' of parentNode 'symbol' at line: 4677
+[2026-11-01 21:01:35,760][WARN]:  KiCad Schematic Reader: Unsupported keyword: 'in_pos_files' of parentNode 'symbol' at line: 4681
+[2026-11-01 21:01:35,761][WARN]:  KiCad Schematic Reader: Unsupported keyword: 'body_style' of parentNode 'symbol' at line: 4795
+[2026-11-01 21:01:35,761][WARN]:  KiCad Schematic Reader: Unsupported keyword: 'in_pos_files' of parentNode 'symbol' at line: 4799
+[2026-11-01 21:01:35,761][WARN]:  KiCad Schematic Reader: Unsupported keyword: 'body_style' of parentNode 'symbol' at line: 4875
+[2026-11-01 21:01:35,761][WARN]:  KiCad Schematic Reader: Unsupported keyword: 'in_pos_files' of parentNode 'symbol' at line: 4879
+[2026-11-01 21:01:35,761][WARN]:  KiCad Schematic Reader: Unsupported keyword: 'body_style' of parentNode 'symbol' at line: 5152
+[2026-11-01 21:01:35,761][WARN]:  KiCad Schematic Reader: Unsupported keyword: 'in_pos_files' of parentNode 'symbol' at line: 5156
+[2026-11-01 21:01:35,761][WARN]:  KiCad Schematic Reader: Unsupported keyword: 'body_style' of parentNode 'symbol' at line: 5231
+[2026-11-01 21:01:35,761][WARN]:  KiCad Schematic Reader: Unsupported keyword: 'in_pos_files' of parentNode 'symbol' at line: 5235
+[2026-11-01 21:01:35,761][WARN]:  KiCad Schematic Reader: Unsupported keyword: 'body_style' of parentNode 'symbol' at line: 5311
+[2026-11-01 21:01:35,761][WARN]:  KiCad Schematic Reader: Unsupported keyword: 'in_pos_files' of parentNode 'symbol' at line: 5315
+[2026-11-01 21:01:35,761][WARN]:  KiCad Schematic Reader: Unsupported keyword: 'body_style' of parentNode 'symbol' at line: 5396
+[2026-11-01 21:01:35,761][WARN]:  KiCad Schematic Reader: Unsupported keyword: 'in_pos_files' of parentNode 'symbol' at line: 5400
+[2026-11-01 21:01:35,761][WARN]:  KiCad Schematic Reader: Unsupported keyword: 'body_style' of parentNode 'symbol' at line: 5543
+[2026-11-01 21:01:35,761][WARN]:  KiCad Schematic Reader: Unsupported keyword: 'in_pos_files' of parentNode 'symbol' at line: 5547
+[2026-11-01 21:01:35,761][WARN]:  KiCad Schematic Reader: Unsupported keyword: 'body_style' of parentNode 'symbol' at line: 5690
+[2026-11-01 21:01:35,761][WARN]:  KiCad Schematic Reader: Unsupported keyword: 'in_pos_files' of parentNode 'symbol' at line: 5694
+[2026-11-01 21:01:35,761][WARN]:  KiCad Schematic Reader: Unsupported keyword: 'body_style' of parentNode 'symbol' at line: 5837
+[2026-11-01 21:01:35,761][WARN]:  KiCad Schematic Reader: Unsupported keyword: 'in_pos_files' of parentNode 'symbol' at line: 5841
+[2026-11-01 21:01:35,761][WARN]:  KiCad Schematic Reader: Unsupported keyword: 'body_style' of parentNode 'symbol' at line: 5916
+[2026-11-01 21:01:35,761][WARN]:  KiCad Schematic Reader: Unsupported keyword: 'in_pos_files' of parentNode 'symbol' at line: 5920
+[2026-11-01 21:01:35,761][WARN]:  KiCad Schematic Reader: Unsupported keyword: 'body_style' of parentNode 'symbol' at line: 6018
+[2026-11-01 21:01:35,761][WARN]:  KiCad Schematic Reader: Unsupported keyword: 'in_pos_files' of parentNode 'symbol' at line: 6022
+[2026-11-01 21:01:35,761][WARN]:  KiCad Schematic Reader: Unsupported keyword: 'body_style' of parentNode 'symbol' at line: 6096
+[2026-11-01 21:01:35,761][WARN]:  KiCad Schematic Reader: Unsupported keyword: 'in_pos_files' of parentNode 'symbol' at line: 6100
+[2026-11-01 21:01:35,761][INFO]:  Converting document: '/Users/stantangeman/Downloads/HA_FONA_LARA_20.kicad_sch'
+[2026-11-01 21:01:35,761][INFO]:  KiCad Symbol Converter: Converting KiCad symbol: 'BQ25185D:BQ25185DLHR'
+[2026-11-01 21:01:35,768][INFO]:  KiCad Symbol Converter: Generating DeviceSet: 'BQ25185DLHR'
+[2026-11-01 21:01:35,769][INFO]:  KiCad Symbol Converter: Generating DeviceSet: 'BQ25185DLHR' finished successfully
+[2026-11-01 21:01:35,769][INFO]:  KiCad Symbol Converter: Converting KiCad symbol: 'BQ25185D:BQ25185DLHR' finished successfully
+[2026-11-01 21:01:35,769][INFO]:  KiCad Symbol Converter: Converting KiCad symbol: 'Connector:Conn_01x03_Pin'
+[2026-11-01 21:01:35,769][INFO]:  KiCad Symbol Converter: Generating DeviceSet: 'Conn_01x03_Pin'
+[2026-11-01 21:01:35,769][INFO]:  KiCad Symbol Converter: Generating DeviceSet: 'CONN_01X03_PIN' finished successfully
+[2026-11-01 21:01:35,769][INFO]:  KiCad Symbol Converter: Converting KiCad symbol: 'Connector:Conn_01x03_Pin' finished successfully
+[2026-11-01 21:01:35,769][INFO]:  KiCad Symbol Converter: Converting KiCad symbol: 'Device:C'
+[2026-11-01 21:01:35,769][INFO]:  KiCad Symbol Converter: Generating DeviceSet: 'C'
+[2026-11-01 21:01:35,769][INFO]:  KiCad Symbol Converter: Symbol pin '' at line '793' was renamed to '@1' because of name duplication
+[2026-11-01 21:01:35,769][INFO]:  KiCad Symbol Converter: Symbol pin '' at line '811' was renamed to '@2' because of name duplication
+[2026-11-01 21:01:35,769][INFO]:  KiCad Symbol Converter: Generating DeviceSet: 'C' finished successfully
+[2026-11-01 21:01:35,769][INFO]:  KiCad Symbol Converter: Converting KiCad symbol: 'Device:C' finished successfully
+[2026-11-01 21:01:35,769][INFO]:  KiCad Symbol Converter: Converting KiCad symbol: 'Device:C_Polarized'
+[2026-11-01 21:01:35,769][INFO]:  KiCad Symbol Converter: Generating DeviceSet: 'C_Polarized'
+[2026-11-01 21:01:35,769][INFO]:  KiCad Symbol Converter: Symbol pin '' at line '970' was renamed to '@1' because of name duplication
+[2026-11-01 21:01:35,769][INFO]:  KiCad Symbol Converter: Symbol pin '' at line '988' was renamed to '@2' because of name duplication
+[2026-11-01 21:01:35,769][INFO]:  KiCad Symbol Converter: Generating DeviceSet: 'C_POLARIZED' finished successfully
+[2026-11-01 21:01:35,769][INFO]:  KiCad Symbol Converter: Converting KiCad symbol: 'Device:C_Polarized' finished successfully
+[2026-11-01 21:01:35,769][INFO]:  KiCad Symbol Converter: Converting KiCad symbol: 'Device:D'
+[2026-11-01 21:01:35,769][INFO]:  KiCad Symbol Converter: Generating DeviceSet: 'D'
+[2026-11-01 21:01:35,770][INFO]:  KiCad Symbol Converter: Generating DeviceSet: 'D' finished successfully
+[2026-11-01 21:01:35,770][INFO]:  KiCad Symbol Converter: Converting KiCad symbol: 'Device:D' finished successfully
+[2026-11-01 21:01:35,770][INFO]:  KiCad Symbol Converter: Converting KiCad symbol: 'HA_FONA_LARA_20-eagle-import:DIODEDO-214AA(SMB)'
+[2026-11-01 21:01:35,770][INFO]:  KiCad Symbol Converter: Generating DeviceSet: 'DIODEDO-214AA(SMB)'
+[2026-11-01 21:01:35,770][INFO]:  KiCad Symbol Converter: Generating DeviceSet: 'DIODEDO-214AA(SMB)' finished successfully
+[2026-11-01 21:01:35,770][INFO]:  KiCad Symbol Converter: Converting KiCad symbol: 'HA_FONA_LARA_20-eagle-import:DIODEDO-214AA(SMB)' finished successfully
+[2026-11-01 21:01:35,770][INFO]:  KiCad Symbol Converter: Converting KiCad symbol: 'HA_FONA_LARA_20-eagle-import:FRAME_C_L'
+[2026-11-01 21:01:35,770][INFO]:  KiCad Symbol Converter: Generating DeviceSet: 'FRAME_C_L'
+[2026-11-01 21:01:35,770][WARN]:  KiCad Symbol Converter: No footprints assigned to symbol: 'FRAME_C_L', creating default device.
+[2026-11-01 21:01:35,770][INFO]:  KiCad Symbol Converter: Generating DeviceSet: 'FRAME_C_L' finished successfully
+[2026-11-01 21:01:35,770][INFO]:  KiCad Symbol Converter: Converting KiCad symbol: 'HA_FONA_LARA_20-eagle-import:FRAME_C_L' finished successfully
+[2026-11-01 21:01:35,770][INFO]:  KiCad Symbol Converter: Converting KiCad symbol: 'HA_FONA_LARA_20-eagle-import:VBAT'
+[2026-11-01 21:01:35,770][INFO]:  KiCad Symbol Converter: Generating DeviceSet: 'VBAT'
+[2026-11-01 21:01:35,770][INFO]:  KiCad Symbol Converter: Generating DeviceSet: 'VBAT' finished successfully
+[2026-11-01 21:01:35,770][INFO]:  KiCad Symbol Converter: Converting KiCad symbol: 'HA_FONA_LARA_20-eagle-import:VBAT' finished successfully
+[2026-11-01 21:01:35,770][INFO]:  KiCad Symbol Converter: Converting KiCad symbol: 'HA_FONA_LARA_20-eagle-import:supply1_GND'
+[2026-11-01 21:01:35,770][INFO]:  KiCad Symbol Converter: Generating DeviceSet: 'supply1_GND'
+[2026-11-01 21:01:35,770][INFO]:  KiCad Symbol Converter: Generating DeviceSet: 'SUPPLY1_GND' finished successfully
+[2026-11-01 21:01:35,770][INFO]:  KiCad Symbol Converter: Converting KiCad symbol: 'HA_FONA_LARA_20-eagle-import:supply1_GND' finished successfully
+[2026-11-01 21:01:35,771][INFO]:  KiCad Symbol Converter: Converting KiCad symbol: 'Simulation_SPICE:PMOS'
+[2026-11-01 21:01:35,771][INFO]:  KiCad Symbol Converter: Generating DeviceSet: 'PMOS'
+[2026-11-01 21:01:35,771][INFO]:  KiCad Symbol Converter: Generating DeviceSet: 'PMOS' finished successfully
+[2026-11-01 21:01:35,771][INFO]:  KiCad Symbol Converter: Converting KiCad symbol: 'Simulation_SPICE:PMOS' finished successfully
+[2026-11-01 21:01:35,771][INFO]:  Converted 10 schematic symbols
+[2026-11-01 21:01:35,776][INFO]:  KiCad Schematic Converter: Attribute name 'Footprint' from line 4138 need to be changed to 'FOOTPRINT'
+[2026-11-01 21:01:35,777][INFO]:  KiCad Schematic Converter: Attribute name 'Footprint' from line 4285 need to be changed to 'FOOTPRINT'
+[2026-11-01 21:01:35,777][INFO]:  KiCad Schematic Converter: Attribute name 'Description' from line 4307 need to be changed to 'DESCRIPTION'
+[2026-11-01 21:01:35,777][INFO]:  KiCad Schematic Converter: Attribute name 'Footprint' from line 4364 need to be changed to 'FOOTPRINT'
+[2026-11-01 21:01:35,777][INFO]:  KiCad Schematic Converter: Attribute name 'Footprint' from line 4514 need to be changed to 'FOOTPRINT'
+[2026-11-01 21:01:35,777][INFO]:  KiCad Schematic Converter: Attribute name 'Description' from line 4536 need to be changed to 'DESCRIPTION'
+[2026-11-01 21:01:35,778][INFO]:  KiCad Schematic Converter: Attribute name 'Footprint' from line 4707 need to be changed to 'FOOTPRINT'
+[2026-11-01 21:01:35,778][INFO]:  KiCad Schematic Converter: Attribute name 'Datasheet' from line 4718 need to be changed to 'DATASHEET'
+[2026-11-01 21:01:35,778][INFO]:  KiCad Schematic Converter: Attribute name 'Description' from line 4729 need to be changed to 'DESCRIPTION'
+[2026-11-01 21:01:35,778][INFO]:  KiCad Schematic Converter: Attribute name 'Sim.Device' from line 4740 need to be changed to 'SIM_DEVICE'
+[2026-11-01 21:01:35,778][INFO]:  KiCad Schematic Converter: Attribute name 'Sim.Type' from line 4751 need to be changed to 'SIM_TYPE'
+[2026-11-01 21:01:35,778][INFO]:  KiCad Schematic Converter: Attribute name 'Sim.Pins' from line 4762 need to be changed to 'SIM_PINS'
+[2026-11-01 21:01:35,778][INFO]:  KiCad Schematic Converter: Attribute name 'Footprint' from line 4823 need to be changed to 'FOOTPRINT'
+[2026-11-01 21:01:35,778][INFO]:  KiCad Schematic Converter: Attribute name 'Description' from line 4845 need to be changed to 'DESCRIPTION'
+[2026-11-01 21:01:35,780][INFO]:  KiCad Schematic Converter: Attribute name 'Footprint' from line 4903 need to be changed to 'FOOTPRINT'
+[2026-11-01 21:01:35,780][INFO]:  KiCad Schematic Converter: Attribute name 'Description' from line 4926 need to be changed to 'DESCRIPTION'
+[2026-11-01 21:01:35,780][INFO]:  KiCad Schematic Converter: Attribute name 'Price' from line 4974 need to be changed to 'PRICE'
+[2026-11-01 21:01:35,780][INFO]:  KiCad Schematic Converter: Attribute name 'Package' from line 4986 need to be changed to 'PACKAGE'
+[2026-11-01 21:01:35,780][INFO]:  KiCad Schematic Converter: Attribute name 'Check_prices' from line 4998 need to be changed to 'CHECK_PRICES'
+[2026-11-01 21:01:35,780][INFO]:  KiCad Schematic Converter: Attribute name 'SnapEDA_Link' from line 5046 need to be changed to 'SNAPEDA_LINK'
+[2026-11-01 21:01:35,780][INFO]:  KiCad Schematic Converter: Attribute name 'Availability' from line 5082 need to be changed to 'AVAILABILITY'
+[2026-11-01 21:01:35,781][INFO]:  KiCad Schematic Converter: Attribute name 'Footprint' from line 5179 need to be changed to 'FOOTPRINT'
+[2026-11-01 21:01:35,781][INFO]:  KiCad Schematic Converter: Attribute name 'Description' from line 5201 need to be changed to 'DESCRIPTION'
+[2026-11-01 21:01:35,781][INFO]:  KiCad Schematic Converter: Attribute name 'Footprint' from line 5259 need to be changed to 'FOOTPRINT'
+[2026-11-01 21:01:35,781][INFO]:  KiCad Schematic Converter: Attribute name 'Description' from line 5281 need to be changed to 'DESCRIPTION'
+[2026-11-01 21:01:35,781][INFO]:  KiCad Schematic Converter: Attribute name 'Footprint' from line 5341 need to be changed to 'FOOTPRINT'
+[2026-11-01 21:01:35,781][INFO]:  KiCad Schematic Converter: Attribute name 'Description' from line 5363 need to be changed to 'DESCRIPTION'
+[2026-11-01 21:01:35,781][INFO]:  KiCad Schematic Converter: Attribute name 'Footprint' from line 5423 need to be changed to 'FOOTPRINT'
+[2026-11-01 21:01:35,782][INFO]:  KiCad Schematic Converter: Attribute name 'Footprint' from line 5570 need to be changed to 'FOOTPRINT'
+[2026-11-01 21:01:35,782][INFO]:  KiCad Schematic Converter: Attribute name 'Footprint' from line 5717 need to be changed to 'FOOTPRINT'
+[2026-11-01 21:01:35,782][INFO]:  KiCad Schematic Converter: Attribute name 'Footprint' from line 5864 need to be changed to 'FOOTPRINT'
+[2026-11-01 21:01:35,782][INFO]:  KiCad Schematic Converter: Attribute name 'Description' from line 5886 need to be changed to 'DESCRIPTION'
+[2026-11-01 21:01:35,782][INFO]:  KiCad Schematic Converter: Attribute name 'Footprint' from line 5944 need to be changed to 'FOOTPRINT'
+[2026-11-01 21:01:35,782][INFO]:  KiCad Schematic Converter: Attribute name 'Description' from line 5966 need to be changed to 'DESCRIPTION'
+[2026-11-01 21:01:35,782][INFO]:  KiCad Schematic Converter: Attribute name 'Sim.Device' from line 5977 need to be changed to 'SIM_DEVICE'
+[2026-11-01 21:01:35,782][INFO]:  KiCad Schematic Converter: Attribute name 'Sim.Pins' from line 5988 need to be changed to 'SIM_PINS'
+[2026-11-01 21:01:35,783][INFO]:  KiCad Schematic Converter: Attribute name 'Footprint' from line 6123 need to be changed to 'FOOTPRINT'
+[2026-11-01 21:01:35,783][INFO]:  Finished processing document: '/Users/stantangeman/Downloads/HA_FONA_LARA_20.kicad_sch'
+[2026-11-01 21:01:35,783][INFO]:  Processing documents list finished
+[2026-11-01 21:01:35,783][INFO]:  KiCad Importer Post Processor: Postprocessing imported design
+[2026-11-01 21:01:35,783][INFO]:  KiCad Importer Post Processor: Processing board components
+[2026-11-01 21:01:35,783][INFO]:  KiCad Importer Post Processor: Package 'C_0402_1005METRIC' was moved from library 'Capacitor_SMD' to 'Device' as 'CAPACITOR_SMD_C_0402_1005METRIC'
+[2026-11-01 21:01:35,783][INFO]:  KiCad Importer Post Processor: Package 'IC_BQ25185DLHR' was moved from library 'BQ25185DLHR' to 'BQ25185D' as 'BQ25185DLHR_IC_BQ25185DLHR'
+[2026-11-01 21:01:35,784][INFO]:  KiCad Importer Post Processor: Package 'DIOM5336X265N' was moved from library 'HA_FONA_LARA_20-import-fps' to 'HA_FONA_LARA_20-eagle-import' as 'HA_FONA_LARA_20-IMPORT-FPS_DIOM5336X265N'
+[2026-11-01 21:01:35,784][INFO]:  KiCad Importer Post Processor: Package 'SOT-23' was moved from library 'Package_TO_SOT_SMD' to 'Simulation_SPICE' as 'PACKAGE_TO_SOT_SMD_SOT-23'
+[2026-11-01 21:01:35,784][INFO]:  KiCad Importer Post Processor: Package 'CP_RADIAL_D8.0MM_P5.00MM' was moved from library 'Capacitor_THT' to 'Device' as 'CAPACITOR_THT_CP_RADIAL_D8.0MM_P5.00MM'
+[2026-11-01 21:01:35,785][INFO]:  KiCad Importer Post Processor: Package 'PINHEADER_1X03_P2.54MM_VERTICAL' was moved from library 'Connector_PinHeader_2.54mm' to 'Connector' as 'CONNECTOR_PINHEADER_2.54MM_PINHEADER_1X03_P2.54MM_VERTICAL'
+[2026-11-01 21:01:35,785][INFO]:  KiCad Importer Post Processor: Package 'D_DO-15_P10.16MM_HORIZONTAL' was moved from library 'Diode_THT' to 'Device' as 'DIODE_THT_D_DO-15_P10.16MM_HORIZONTAL'
+[2026-11-01 21:01:35,785][INFO]:  KiCad Importer Post Processor: Processing board components finished
+[2026-11-01 21:01:35,785][INFO]:  KiCad Importer Post Processor: Processing board nets
+[2026-11-01 21:01:35,785][INFO]:  KiCad Importer Post Processor: Processing board nets finished
+[2026-11-01 21:01:35,785][INFO]:  KiCad Importer Post Processor: Processing net classes
+[2026-11-01 21:01:35,786][INFO]:  KiCad Importer Post Processor: Processing net classes finished
+[2026-11-01 21:01:35,786][INFO]:  KiCad Importer Post Processor: Postprocessing imported design finished
+[2026-11-01 21:01:35,815][INFO]:  Import finished
